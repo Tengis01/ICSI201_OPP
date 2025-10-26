@@ -1,8 +1,13 @@
-#include "2d.h"                  //2d.h header file холбож байна
-#ifndef __square__
-#define __square__
+#ifndef __SQUARE__
+#define __SQUARE__
 
-class square:public twod{        //2dshape классаас удамшина
+#include "2d.h"
+
+class square:public twod{
+   public:
+   square();
+   square(float a);
+
    float area();                 //талбай олох функц
    float perimeter();            //периметр олох функц
    void coordinate();            //координатын цэгүүдийг олох функц

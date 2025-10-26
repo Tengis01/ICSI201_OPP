@@ -1,8 +1,17 @@
 #include "2d.h"
 #include <iostream>
-#include<string.h>
+#include <string.h>
 
 using namespace std;
+
+twod::twod() : shape() {
+    // xy-ыг 0 болгоё
+    for (int i = 0; i < 4; ++i) { xy[i][0] = 0; xy[i][1] = 0; }
+}
+
+twod::twod(const char* n, float side) : shape(n, side) {
+    for (int i = 0; i < 4; ++i) { xy[i][0] = 0; xy[i][1] = 0; }
+}
 
 void twod::get_data(void){                                          //get data функц тодорхойлолт
             cout<<"coordinate: "<<endl;
@@ -30,11 +39,11 @@ void twod::show_data(void){                                         //мэдээ
                 cout<<"y: ";
                 cout<<xy[i][1]<<endl;
                 }
-            }
-            cout<<"side: ";
-            cout<<a<<endl;
-            cout<<"area: ";
-            cout<< area()<<endl;
-            cout<<"perimeter: ";
-            cout<< perimeter()<<endl;
+            }else if (strcmp(name,"circle")==0){                       //нэр нь дугуй байвал төвийн координатыг хэвлэж харуулна
+            cout<<"x: "<<xy[0][0]<<endl;
+            cout<<"y: "<<xy[0][1]<<endl;
         }
+            cout<<"side: "<<a<<endl;
+            cout<<"area: "<<area()<<endl;
+            cout<<"perimeter: "<<perimeter()<<endl;
+}

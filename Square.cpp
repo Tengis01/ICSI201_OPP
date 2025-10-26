@@ -1,4 +1,8 @@
-#include "square.h"                 //square.h header file холбож байна
+#include "Square.h"                 //square.h header file холбож байна
+
+square::square() : twod("square", 0) {} // АНХДАГЧ байгуулагч тодорхойлолт
+square::square(float a_) : twod("square", a_) {} // ПАРАМЕТРТ байгуулагч тодорхойлолт
+
     float square::perimeter(){      //периметр функц тодорхойлолт
         return 4*a;                 //периметрийг олон буцааж байна
     }

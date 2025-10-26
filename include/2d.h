@@ -1,9 +1,14 @@
-#include "shape.h"                          //shape.h header file холбож өгнө
-#ifndef __2d__
-#define __2d__
+#ifndef __2D__
+#define __2D__
 
+#include "Shape.h"                          //shape.h header file холбож өгнө
 class twod: public shape{                   //shape ээс удамшсан 2Dshape класс тодорхойлолт
     public:                                 //public хандалтын түвшинтэй
+        // --- АНХДАГЧ байгуулагч
+        twod();
+        // --- ПАРАМЕТРТ байгуулагч: ЭХ КЛАССЫН параметрт байгуулагчийг дуудна
+        twod(const char* n, float side);
+
         virtual float area()=0;             //ингэснээр удамшсан функцууд даин тодорхойлолт хийж болно
         virtual float perimeter()=0;
         float xy[4][2];                     //координатын цэгүүдийг хадгалах хувьсагч

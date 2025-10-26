@@ -1,5 +1,9 @@
 #include "circle.h"             //circle.h header file холболт
 #include <math.h>               //math сан холболт
+
+circle::circle() : twod("circle", 0) {} // АНХДАГЧ байгуулагч тодорхойлолт
+circle::circle(float r) : twod("circle", r) {} // ПАРАМЕТРТ байгуулагч тодорхойлолт
+
 float circle::perimeter(){      //периметр функц тодорхойлолт
     return 2*3.14*a;            //периметрийг олон буцааж байна
 }
