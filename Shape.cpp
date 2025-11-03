@@ -3,6 +3,8 @@
 #include <string.h>  
 #include <stddef.h>  // NULL
 
+int shape::count=0; // Статик хувьсагчийг анхдагч утгаар 0 болгоно
+
 shape::shape() {  // анхдагч байгуулагч
     a = 0;
     name = NULL;
@@ -23,8 +25,6 @@ shape::~shape() { // устгагч
     if (name) {
         delete[] name;
         name = NULL;
-        count--;
     }
+    count--;
 }
-
-int shape::count=0; // Статик хувьсагчийг анхдагч утгаар 0 болгоно
