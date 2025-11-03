@@ -31,21 +31,51 @@ int main() {
         shapes[i]->show_data();
     }
 
-    // BUBBLE SORT: талбайгаар нь (өсөхөөр) эрэмбэлэх
-    for (int i = 0; i < n - 1; ++i) {
-        for (int j = 0; j < n - i - 1; ++j) {
-            if (shapes[j]->area() > shapes[j + 1]->area()) {
-                twod* tmp = shapes[j];
-                shapes[j]   = shapes[j + 1];
-                shapes[j+1] = tmp;
+    // Үүссэн объектын тоог хэвлэхҮүссэн объектын тоог хэвлэх
+    cout << "\nNiit uusgesen object: " << shape::getCount() << endl;
+
+    // Хэрэглэгч ямар арга замаар эрэмбэлхээ сонгох
+    int c;
+    do{
+        cout<<"ymr eremblelt songoh ve?\n1. talbaigaar\n2. perimetereer.\n==> ";
+        cin>>c;
+        if(c==1){
+            // BUBBLE SORT: талбайгаар нь (өсөхөөр) эрэмбэлэх
+            for (int i = 0; i < n - 1; ++i) {
+                for (int j = 0; j < n - i - 1; ++j) {
+                    if (shapes[j]->area() > shapes[j + 1]->area()) {
+                        twod* tmp = shapes[j];
+                        shapes[j]   = shapes[j + 1];
+                        shapes[j+1] = tmp;
+                    }
+                }
+            }
+
+            cout << "\n== Talbaigaar erembelsen (osohoor) ==\n";
+            for (int i = 0; i < n; ++i) {
+                shapes[i]->show_data();
             }
         }
-    }
+        if(c==2){
+            // BUBBLE SORT: Периметрээр (өсөхөөр) эрэмбэлэх
+            for (int i = 0; i < n - 1; ++i) {
+                for (int j = 0; j < n - i - 1; ++j) {
+                    if (shapes[j]->perimeter() > shapes[j + 1]->perimeter()) {
+                        twod* tmp = shapes[j];
+                        shapes[j] = shapes[j + 1];
+                        shapes[j + 1] = tmp;
+                    }
+                }
+            }
 
-    cout << "\n== Talbaigaar erembelsen (osohoor) ==\n";
-    for (int i = 0; i < n; ++i) {
-        shapes[i]->show_data();
-    }
+            cout << "\n== Perimeter-eer erembelsen (osohoor) ==\n";
+            for (int i = 0; i < n; ++i) {
+                shapes[i]->show_data();
+            }
+        }
+        cout << "\ndahin erembleh uu? (1-Tiim / 0-Ugui): ";
+        cin >> c;
+    }while (c==1);
 
     // Санах ой цэвэрлэх
     for (int i = 0; i < n; ++i) delete shapes[i];

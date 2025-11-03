@@ -1,4 +1,5 @@
 #include "Shape.h"
+
 #include <string.h>  
 #include <stddef.h>  // NULL
 
@@ -23,3 +24,5 @@ shape::~shape() { // устгагч
         name = NULL;
     }
 }
+
+int shape::count=0; // Статик хувьсагчийг анхдагч утгаар 0 болгоно
