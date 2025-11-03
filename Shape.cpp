@@ -3,7 +3,7 @@
 #include <string.h>  
 #include <stddef.h>  // NULL
 
-int shape::count=0; // Статик хувьсагчийг анхдагч утгаар 0 болгоно
+static int count=0;
 
 shape::shape() {  // анхдагч байгуулагч
     a = 0;
@@ -28,3 +28,5 @@ shape::~shape() { // устгагч
     }
     count--;
 }
+static int setCount(int n) { count = n; }
+static int getCount() { return count; }

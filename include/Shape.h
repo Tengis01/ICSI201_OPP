@@ -3,23 +3,20 @@
 
 class shape {
 public:
-    float a;          // тал/радиус
-    char* name;       // дүрсний нэр
 
     static int count; // Бүх үүссэн объектын тоог тоолох static хувьсагч
 
+    float a;          // тал/радиус
+    char* name;       // дүрсний нэр
+
     //  АНХДАГЧ байгуулагч
-    shape(); // Объект үүсэх бүрт нэмэгдэнэ
+    shape();
 
     // ПАРАМЕТРТ байгуулагч 
     shape(const char* n, float side);
 
     // УСТГАГЧ 
-    virtual ~shape(); // Объект устахад хасагдана
-
-    // Static гишүүн функцүүд — утга оноох, авах
-    static void setCount(int n) {count=n; }
-    static int getCount() {return count; }
+    virtual ~shape();// Объект устахад хасагдана
 };
 
 #endif
