@@ -6,6 +6,7 @@
 shape::shape() {  // анхдагч байгуулагч
     a = 0;
     name = NULL;
+    count++;
 }
 
 shape::shape(const char* n, float side) {  // параметрт байгуулагч
@@ -22,6 +23,7 @@ shape::~shape() { // устгагч
     if (name) {
         delete[] name;
         name = NULL;
+        count--;
     }
 }
 
