@@ -32,7 +32,7 @@ int main() {
     }
 
     // Үүссэн объектын тоог хэвлэхҮүссэн объектын тоог хэвлэх
-    cout << "\nNiit uusgesen object: " << shape::getCount() << endl;
+    cout << "\nNiit uusgesen object: " << shape::count_ret() << endl;
 
     // Хэрэглэгч ямар арга замаар эрэмбэлхээ сонгох
     int c;

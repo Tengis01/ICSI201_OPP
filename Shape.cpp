@@ -3,7 +3,7 @@
 #include <string.h>  
 #include <stddef.h>  // NULL
 
-static int count=0;
+int shape::count = 0; //static huvisagchid garaanii utga
 
 shape::shape() {  // анхдагч байгуулагч
     a = 0;
@@ -19,6 +19,8 @@ shape::shape(const char* n, float side) {  // параметрт байгуул�
     } else {
         name = NULL;
     }
+    // increase the static object count for this constructor as well
+    count++;
 }
 
 shape::~shape() { // устгагч
@@ -28,5 +30,6 @@ shape::~shape() { // устгагч
     }
     count--;
 }
-static int setCount(int n) { count = n; }
-static int getCount() { return count; }
+int shape::count_ret(){
+    return count;
+}
