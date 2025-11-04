@@ -19,7 +19,6 @@ shape::shape(const char* n, float side) {  // параметрт байгуул�
     } else {
         name = NULL;
     }
-    // increase the static object count for this constructor as well
     count++;
 }
 

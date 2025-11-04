@@ -16,9 +16,9 @@ void twod::get_data(void) {
     cout << "coordinate: " << endl;
     cout << "x: "; cin >> this->xy[0][0];                           // xy[0][0] буюу х цэгийг гараас оруулна
     cout << "y: "; cin >> this->xy[0][1];                           // xy[0][1] буюу у цэгийг гараас оруулна
-    cout << "side: "; cin >> this->a;                               // //талын уртыг гараас оруулна
+    cout << "side: "; cin >> this->a;                               // талын уртыг гараас оруулна
 };
-    
+
 void twod::show_data(void){                                         //мэдээлэл дэлгэцэлж харуулах функц тодорхойлолт
             cout<<"_________"<<endl<<name<<endl<<"_________"<<endl;
             cout<<"coordinate: "<<endl;
