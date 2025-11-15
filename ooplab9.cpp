@@ -110,6 +110,12 @@ private:
     vector<Employee*> employees;
 
 public:
+    Division(const string& name = "Default Division")
+        : DivisionName(name) {
+        // Anh uusgeh ued heltesiin ner default-aar "Default Division"
+        cout << "[Info] Division uuslee: " << DivisionName << endl;
+    }
+
     Division(const string& name = "") : DivisionName(name) {}
 
     string getDivisionName() const { return DivisionName; }
@@ -164,28 +170,37 @@ private:
 
 public:
     // Employee байгуулагч - заавал Division, 1 JobDescription өгнө
-    Employee(string name,
-             string ss,
-             int age,
-             const string& companyID,
-             const string& title,
-             const string& startDate,
-             Division* div,
-             JobDescription* firstJob)
+    Employee(string name = "Unknown",
+             string ss = "000000",
+             int age = 0,
+             const string& companyID = "C000",
+             const string& title = "Employee",
+             const string& startDate = "2020-01-01",
+             Division* div = nullptr,
+             JobDescription* firstJob = nullptr)
         : Person(name, ss, age),
           CompanyID(companyID),
           Title(title),
           StartDate(startDate),
-          division(div),
-          spouse(nullptr)
-    {
-        // 1..n job - эхний job заавал
+          spouse(nullptr) {
+
+        // Hoolbogdoh Division baihgui bol default uusgene
+        if (div == nullptr) {
+            division = new Division("Default Division");
+        } else {
+            division = div;
+        }
+
+        // Hoolbogdoh JobDescription baihgui bol default uusgene
+        if (firstJob == nullptr) {
+            firstJob = new JobDescription("Default Job");
+        }
+
+        // Job-oo nemne
         this->addJob(firstJob);
 
-        // Division-даа өөрийгөө бүртгүүлнэ (1..n)
-        if (division) {
-            division->addEmployee(this);
-        }
+        // Division-d ene ajiltniig nemne
+        division->addEmployee(this);
 
         ++count;
     }
@@ -241,22 +256,16 @@ public:
     // Бүх мэдээллээ хэвлэх
     void printAllInfo() const {
         cout << "================ Employee ================\n";
-        // Person-ийн суурь мэдээлэл
         Person::printBasicInfo();
         cout << "\nCompanyID: " << CompanyID
              << ", Title: " << Title
              << ", Start date: " << StartDate << "\n";
 
-        // Division (1)
         cout << "Division: ";
-        if (division) {
-            cout << division->getDivisionName();
-        } else {
-            cout << "None";
-        }
+        if (division) cout << division->getDivisionName();
+        else cout << "None";
         cout << "\n";
 
-        // JobDescriptions (1..n)
         cout << "Job descriptions (" << jobs.size() << "): ";
         for (size_t i = 0; i < jobs.size(); ++i) {
             jobs[i]->print();
@@ -264,7 +273,6 @@ public:
         }
         cout << "\n";
 
-        // Spouse (0..1)
         if (spouse) {
             cout << "Spouse: ";
             spouse->printBasicInfo();
@@ -273,7 +281,6 @@ public:
             cout << "Spouse: (none)\n";
         }
 
-        // Children (0..n)
         cout << "Children (" << children.size() << "):\n";
         for (const Child* ch : children) {
             cout << "  - ";
@@ -337,6 +344,19 @@ int main() {
         e->printAllInfo();
         cout << "\n";
     }
+
+
+    Employee e1("Bold", "UK95122136", 30, "C001", "Developer", "2020-01-10", nullptr, &dev);
+
+    // 2. Employee uusgeh ued Division zaasan (IT Division ashiglagdana)
+    Employee e2("Sarnai", "JK97072137", 28, "C002", "Team Lead", "2019-05-20", &it, nullptr);
+
+    cout << "\nTotal employees: " << Employee::getCount() << "\n\n";
+
+    e1.printAllInfo();
+    cout << "\n";
+    e2.printAllInfo();
+    cout << "\n";
 
     return 0;
 }
